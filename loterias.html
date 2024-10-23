@@ -4,11 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loterías - Tulotero</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0074d9;
+        }
+
+        #loterias-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .loteria {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .loteria:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .loteria a {
+            text-decoration: none;
+            color: #0074d9;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+            position: relative;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        footer ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+    </style>
 </head>
 <body>
     <h2>Loterías Disponibles</h2>
-    <div id="loterias-list"></div>
-    <script src="scripts.js"></script>
+    <div id="loterias-list">
+        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/loteria-nacional/8910'">
+            <a href="#">Lotería Nacional</a>
+        </div>
+        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/euromillones/12345'">
+            <a href="#">Euromillones</a>
+        </div>
+        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/la-primitiva/67890'">
+            <a href="#">La Primitiva</a>
+        </div>
+        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/bonoloto/13579'">
+            <a href="#">Bonoloto</a>
+        </div>
+        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/lototurf/24680'">
+            <a href="#">LotoTurf</a>
+        </div>
+        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/lotera-primera/98765'">
+            <a href="#">Lotería de la Primera</a>
+        </div>
+        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/sorteo-de-navidad/54321'">
+            <a href="#">Sorteo de Navidad</a>
+        </div>
+        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/sorteo-del-nino/11111'">
+            <a href="#">Sorteo del Niño</a>
+        </div>
+        <!-- Puedes agregar más loterías aquí -->
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Tulotero. Todos los derechos reservados.</p>
+        <ul class="footer-links">
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Términos y Condiciones</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </footer>
+
+    <script src="scriptss.js"></script>
 </body>
 </html>

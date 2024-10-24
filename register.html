@@ -4,16 +4,157 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - Tulotero</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.8), rgba(0, 116, 217, 0.8));
+            color: #fff;
+            overflow: hidden; /* Evita el desbordamiento */
+        }
+
+        /* Contenedor del formulario */
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            color: #333;
+            position: relative; /* Para posicionar los pseudo-elementos */
+            overflow: hidden; /* Evita que el pseudo-elemento sobresalga */
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #28a745;
+            font-weight: 700;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #28a745;
+        }
+
+        /* Estilos de los inputs */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #0074d9;
+            box-shadow: 0 0 10px rgba(0, 116, 217, 0.2);
+            background-color: #ffffff;
+        }
+
+        /* Botón de registro */
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #28a745;
+            color: white;
+            font-size: 1.2em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 116, 217, 0.2);
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        /* Enlace para iniciar sesión */
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #0074d9;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #005bb5;
+        }
+
+        /* Estilo de fondo en el formulario */
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(40, 167, 69, 0.1);
+            border-radius: 12px;
+            z-index: 0; /* Coloca detrás del contenido */
+        }
+
+        .form-container h2,
+        .form-container input,
+        .form-container button,
+        .form-container a {
+            position: relative; /* Coloca encima del pseudo-elemento */
+            z-index: 1;
+        }
+
+        /* Responsividad para móviles */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h2>Registrarse</h2>
-    <form id="form-register">
-        <input type="text" placeholder="Nombre" required>
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Contraseña" required>
-        <button type="submit">Registrar</button>
-    </form>
-    <script src="script.js"></script>
+    <div class="form-container">
+        <form id="form-register">
+            <h2>Registrarse</h2>
+            <input type="text" placeholder="Nombre" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Contraseña" required>
+            <button type="submit">Registrar</button>
+            <a href="login.html">¿Ya tienes una cuenta? Iniciar sesión</a>
+            <a href="index.html">Volver al inicio</a>
+        </form>
+    </div>
+    <script>
+        document.getElementById('form-register').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Lógica para el registro del usuario
+            alert('Registro exitoso!');
+        });
+    </script>
 </body>
 </html>

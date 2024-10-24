@@ -3,15 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar Contraseña - Tulotero</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Recuperación de Contraseña - Tulotero</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, rgba(255, 93, 93, 0.8), rgba(93, 155, 255, 0.8));
+            color: #fff;
+        }
+
+        /* Contenedor del formulario */
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #ff5d5d;
+            font-weight: 700;
+        }
+
+        /* Estilos de los inputs */
+        input[type="email"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+        }
+
+        input[type="email"]:focus {
+            border-color: #ff5d5d;
+            box-shadow: 0 0 10px rgba(255, 93, 93, 0.2);
+            background-color: #ffffff;
+        }
+
+        /* Botón de recuperación */
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #ff5d5d;
+            color: white;
+            font-size: 1.2em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 93, 93, 0.2);
+        }
+
+        button:hover {
+            background-color: #d24e4e;
+        }
+
+        /* Enlace para regresar */
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #0074d9;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #005bb5;
+        }
+
+        /* Estilo de fondo en el formulario */
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 93, 93, 0.1);
+            border-radius: 12px;
+            z-index: 0;
+        }
+
+        .form-container h2,
+        .form-container input,
+        .form-container button,
+        .form-container a {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsividad para móviles */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h2>Recuperar Contraseña</h2>
-    <form id="form-recuperar">
-        <input type="email" placeholder="Email" required>
-        <button type="submit">Enviar Enlace de Recuperación</button>
-    </form>
-    <script src="script.js"></script>
+    <div class="form-container">
+        <form id="form-recovery">
+            <h2>Recuperar Contraseña</h2>
+            <input type="email" placeholder="Email" required>
+            <button type="submit">Enviar enlace de recuperación</button>
+            <a href="login.html">Volver a iniciar sesión</a>
+        </form>
+    </div>
+    <script>
+        document.getElementById('form-recovery').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Lógica para la recuperación de contraseña
+            alert('Se ha enviado un enlace de recuperación a tu email.');
+        });
+    </script>
 </body>
 </html>

@@ -7,54 +7,104 @@
     <style>
         /* Estilos generales */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
+            padding: 0;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #28a745;
+            padding: 5px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-size: 1.2em;
+        }
+
+        header a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        header a:hover {
+            color: #ffcc00;
         }
 
         h2 {
             text-align: center;
-            color: #0074d9;
+            color: #fff;
+            font-size: 2.5em;
+            margin-top: 20px; /* Reducido */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         #loterias-list {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 20px; /* Reducido */
+            padding: 20px;
         }
 
         .loteria {
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 10px;
-            width: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px;
+            width: 220px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative; /* Para la animación */
+            overflow: hidden; /* Para el efecto de fondo */
         }
 
         .loteria:hover {
             transform: scale(1.05);
-            cursor: pointer;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .loteria::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            z-index: 0; /* Detrás del texto */
         }
 
         .loteria a {
+            position: relative;
+            z-index: 1; /* Por encima del efecto */
             text-decoration: none;
-            color: #0074d9;
+            color: #fff;
             font-weight: bold;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         footer {
             text-align: center;
-            margin-top: 20px;
-            padding: 10px 0;
-            background-color: #333;
-            color: white;
-            position: relative;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px 0;
+            margin-top: auto;
         }
 
         footer p {
@@ -64,48 +114,157 @@
         footer ul {
             list-style: none;
             padding: 0;
+            display: inline-block;
+            margin-top: 10px;
         }
 
         footer ul li {
             display: inline;
-            margin: 0 10px;
+            margin: 0 15px;
         }
 
         footer ul li a {
-            color: white;
+            color: #28a745;
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer ul li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Estilos del formulario de apuesta */
+        #apuesta-form {
+            text-align: center;
+            margin: 40px auto; /* Centro horizontal */
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px; /* Aumentar padding */
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px); /* Efecto de desenfoque */
+            width: 90%;
+            max-width: 400px; /* Ancho máximo */
+        }
+
+        #apuesta-form h2 {
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        #apuesta-form label {
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+            font-size: 1.1em; /* Aumentar tamaño de fuente */
+        }
+
+        #apuesta-form input,
+        #apuesta-form select {
+            padding: 10px;
+            width: 100%; /* Ancho completo */
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px; /* Más espacio */
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            transition: background-color 0.3s ease; /* Transición */
+        }
+
+        #apuesta-form input:focus,
+        #apuesta-form select:focus {
+            outline: none;
+            border: 2px solid #28a745;
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        #precio {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Efecto al presionar */
+        }
+
+        button:hover {
+            background-color: #218838;
+            transform: translateY(-2px); /* Mover hacia arriba */
+        }
+
+        button:active {
+            transform: translateY(1px); /* Efecto de pulsar */
+        }
+
+        /* Animación de fondo para mejorar el aspecto visual */
+        @keyframes fondo {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        body {
+            background-size: 400% 400%;
+            animation: fondo 15s ease infinite;
         }
 
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <header>
+        <a href="index.html">Volver al Inicio</a>
+        <div id="jackpots">Botes: Cargando...</div>
+    </header>
+
     <h2>Loterías Disponibles</h2>
     <div id="loterias-list">
-        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/loteria-nacional/8910'">
+        <div class="loteria" onclick="selectLottery('Lotería Nacional')">
             <a href="#">Lotería Nacional</a>
         </div>
-        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/euromillones/12345'">
+        <div class="loteria" onclick="selectLottery('Euromillones')">
             <a href="#">Euromillones</a>
         </div>
-        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/la-primitiva/67890'">
+        <div class="loteria" onclick="selectLottery('La Primitiva')">
             <a href="#">La Primitiva</a>
         </div>
-        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/bonoloto/13579'">
+        <div class="loteria" onclick="selectLottery('Bonoloto')">
             <a href="#">Bonoloto</a>
         </div>
-        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/lototurf/24680'">
+        <div class="loteria" onclick="selectLottery('LotoTurf')">
             <a href="#">LotoTurf</a>
         </div>
-        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/lotera-primera/98765'">
+        <div class="loteria" onclick="selectLottery('Lotería de la Primera')">
             <a href="#">Lotería de la Primera</a>
         </div>
-        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/sorteo-de-navidad/54321'">
+        <div class="loteria" onclick="selectLottery('Sorteo de Navidad')">
             <a href="#">Sorteo de Navidad</a>
         </div>
-        <div class="loteria" onclick="window.location.href='https://web.tulotero.es/jugar/sorteo-del-nino/11111'">
+        <div class="loteria" onclick="selectLottery('Sorteo del Niño')">
             <a href="#">Sorteo del Niño</a>
         </div>
-        <!-- Puedes agregar más loterías aquí -->
+    </div>
+
+    <div id="apuesta-form" style="display:none;">
+        <h2>Hacer Apuesta</h2>
+        <label for="fecha">Selecciona una o varias fechas:</label>
+        <input type="date" id="fecha" multiple>
+        <label for="metodo">Método para rellenar boleto:</label>
+        <select id="metodo">
+            <option value="aleatorio">Aleatorio</option>
+            <option value="manual">Manual</option>
+        </select>
+        <label for="numApuestas">Número de apuestas:</label>
+        <input type="number" id="numApuestas" value="1" min="1">
+        <div id="precio">Precio Total: 2€</div>
+        <button onclick="comprar()">Comprar</button>
     </div>
 
     <footer>
@@ -116,6 +275,55 @@
             <li><a href="#">Contacto</a></li>
         </ul>
     </footer>
+
+    <script>
+        let selectedLottery = '';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadJackpots();
+        });
+
+        function loadJackpots() {
+            const jackpots = {
+                "Lotería Nacional": "15,000,000€",
+                "Euromillones": "20,000,000€",
+                "La Primitiva": "15,000,000€",
+                "Bonoloto": "5,000,000€",
+                "LotoTurf": "3,000,000€",
+                "Lotería de la Primera": "2,000,000€",
+                "Sorteo de Navidad": "30,000,000€",
+                "Sorteo del Niño": "5,000,000€"
+            };
+
+            let jackpotText = '';
+            for (let lottery in jackpots) {
+                jackpotText += `${lottery}: ${jackpots[lottery]}<br>`;
+            }
+            document.getElementById('jackpots').innerHTML = jackpotText;
+        }
+
+        function selectLottery(lottery) {
+            document.getElementById('apuesta-form').style.display = 'block';
+            selectedLottery = lottery;
+            updatePrice();
+        }
+
+        function updatePrice() {
+            const numApuestas = document.getElementById('numApuestas').value;
+            const pricePerBet = 2; // Precio por apuesta
+            const totalPrice = numApuestas * pricePerBet;
+            document.getElementById('precio').innerText = `Precio Total: ${totalPrice}€`;
+        }
+
+        function comprar() {
+            const numApuestas = document.getElementById('numApuestas').value;
+            const totalPrice = numApuestas * 2; // Precio por apuesta
+            alert(`Has comprado ${numApuestas} apuestas para ${selectedLottery}. Precio total: ${totalPrice}€`);
+        }
+
+        // Actualiza el precio al cambiar el número de apuestas
+        document.getElementById('numApuestas').addEventListener('input', updatePrice);
+    </script>
 
     <script src="scriptss.js"></script>
 </body>

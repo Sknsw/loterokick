@@ -4,15 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - Tulotero</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0074d9, #2ecc71);
+            color: #fff;
+        }
+
+        /* Contenedor del formulario */
+        form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #28a745;
+        }
+
+        /* Estilos de los inputs */
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 10px rgba(0, 116, 217, 0.2);
+        }
+
+        /* Botón de inicio de sesión */
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #28a745;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #28a745;
+        }
+
+        /* Enlaces de recuperación, registro e inicio */
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #0074d9;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #005bb5;
+        }
+
+        /* Responsividad para móviles */
+        @media (max-width: 600px) {
+            form {
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h2>Iniciar Sesión</h2>
     <form id="form-login">
+        <h2>Iniciar Sesión</h2>
         <input type="email" placeholder="Email" required>
         <input type="password" placeholder="Contraseña" required>
         <button type="submit">Iniciar Sesión</button>
+        <a href="recuperar.html">¿Olvidaste tu contraseña?</a>
+        <a href="register.html">Crear una cuenta nueva</a>
+        <a href="index.html">Volver al inicio</a> <!-- Enlace añadido para ir al inicio -->
     </form>
-    <script src="script.js"></script>
+    <script>
+        // Aquí puedes agregar funcionalidades como validaciones o manejo del formulario.
+        document.getElementById('form-login').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Lógica de autenticación
+            alert('Iniciando sesión...');
+        });
+    </script>
 </body>
 </html>
